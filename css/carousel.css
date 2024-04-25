@@ -1,0 +1,104 @@
+/* carousel */
+.carousel {
+    display: flex;
+    align-items: center;
+    background: white;
+    justify-content: center;
+}
+
+.slider {
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    box-shadow: 0 10px 20px -5px rgb(0 0 0 / 0.125);
+}
+
+.slide-track {
+    display: flex;
+    width: calc(250px * 14); /* Увеличил ширину для бесконечного прокручивания */
+    animation: carousel 40s linear infinite; 
+}
+
+.slide {
+    height: 100px;
+    width: 250px;
+}
+
+.slide img {
+    height: 100px;
+    width: 250px;
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+@keyframes carousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * 14 / 2)); /* INFINITYYY */
+    }
+}
+
+.category-item {
+    display: block;
+    position: relative;
+    color: rgb(166, 237, 214);
+}
+
+.category-item-title {
+    display: inline-block;
+    color: black;
+    background-color: white;
+    font-size: .8rem;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: .5rem 1rem;
+    transform: translate(-50%, -50%);
+}
+
+.slider::before, .slider::after {
+    background: linear-gradient(to right, #fff 0%, rgb(255 255 255 / 0) 100%);
+    content: '';
+    height: 100px;
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+}
+
+.slider::before {
+    top: 0;
+    left: 0;
+} 
+.slider::after {
+    top: 0;
+    right: 0;
+    transform: rotateZ(180deg);
+}
+
+/* Кнопки для ручной прокрутки (доделать) */
+.arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(242, 0, 0, 0.5);
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: -4rem;
+    z-index: 10;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
